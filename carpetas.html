@@ -112,17 +112,18 @@
   <div class="explorer">
     <div class="sidebar">
       <ul class="tree">
-        <li>
-          Cortes
-          <br>
-          <button class="folder-button" onclick="window.location.href='peluqueria_imagenes_corregido.html'">Ir a Cortes</button>
-
-        </li>
-        <li>
-          Imágenes
-          <br>
-          <button class="folder-button" onclick="window.location.href='peluqueria_imagenes_corregido.html'">Ir a Cortes</button>
-        </li>
+        <li onclick="toggleFolder(this)">
+    Cortes
+    <ul>
+      <li><a href="peluqueria_imagenes_corregido.html">Ir a Cortes</a></li>
+    </ul>
+  </li>
+         <li onclick="toggleFolder(this)">
+    imagenes
+    <ul>
+      <li><a href="peluqueria_imagenes_corregido.html">Ir a Cortes</a></li>
+    </ul>
+  </li>
       </ul>
     </div>
     <div class="content">
@@ -132,14 +133,15 @@
   <div class="map-container">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.1957264230414!2d-60.74262122351325!3d-31.491303499878608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5050c3e421c6d%3A0x3697a6f6dd8fd91c!2sEstanislao%20L%C3%B3pez%20965%2C%20S3018APM%20Recreo%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1746128206761!5m2!1ses!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
-<div id="map" style="height: 400px;"></div>
-<script>
-  var map = L.map('map').setView([-31.4913, -60.7426], 13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-</script>
+  <script>
+     function toggleFolder(element) {
+    element.classList.toggle('open');
+  }
+
+  </script>
+   
 
 </body>
 </html>
+
 
