@@ -2,18 +2,131 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Menú con Frames</title>
+  <title>Explorador de Archivos Simulado con Mapa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-image: url("body.jpg");
+    }
+
+    .explorer {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      background-image: url("capetafoto.jpg");
+      width: 500px;
+      background-color: #3a3939;
+      border-right: 1px solid #030303;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    ul.tree {
+      list-style-type: none;
+      padding-left: 20px;
+    }
+
+    ul.tree li {
+      ul.tree li {
+        cursor: pointer;
+        position: relative;
+        padding-left: 25px;
+        margin-bottom:20x; /* <-- añade espacio entre carpetas */
+        color: #000000;
+      }
+    }
+    
+
+    ul.tree li::before {
+      content: "📁";
+      position:absolute;
+      left: 0;
+    }
+
+    ul.tree li.file::before {
+      content: "📄";
+    }
+
+    ul.tree ul {
+      display: none;
+      list-style-type: none;
+      padding-left: 20px;
+    }
+
+    ul.tree li.open > ul {
+      display: block;
+    }
+
+    /* Estilos para la barra de ubicación */
+    .path-bar {
+      background-color: #5f5e5e;
+      padding: 10px 15px;
+      border-bottom: 1px solid #ccc;
+      font-size: 14px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Estilos para el mapa responsivo */
+    .map-container {
+      position: flex;
+      padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .map-container iframe {
+      position: absolute;
+      top: 450px;
+      left: 0;
+      width: 100%;
+      height: 80%;
+      padding: 0px;
+    }
+  </style>
 </head>
-<frameset cols="20%,80%">
-  <frame src="carpetas.html" name="menu">
-  <frameset cols="50%,50%">
-    <frame src="index1.html" name="contenido1">
-    <frame src="index2.html" name="contenido2">
-  </frameset>
-</frameset>
-<noframes>
-  <body>
-    Tu navegador no soporta frames. Por favor, actualiza tu navegador.
-  </body>
-</noframes>
+<body>
+  <div class="path-bar" id="pathBar">Nuestas capetas de informacion</div>
+  <div class="explorer">
+    <div class="sidebar">
+      <ul class="tree">
+        <li id="imagenesFolder" onclick="openLocalFile()">Cortes</li>
+        <li id="imagenesFolder" onclick="openLocalFile()">Imágenes</li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.1957264230414!2d-60.74262122351325!3d-31.491303499878608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5050c3e421c6d%3A0x3697a6f6dd8fd91c!2sEstanislao%20L%C3%B3pez%20965%2C%20S3018APM%20Recreo%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1746128206761!5m2!1ses!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+  </div>
+
+  <script>
+    function toggle(element) {
+      element.classList.toggle('open');
+      event.stopPropagation();
+    }
+
+    function showFile(event, filename) {
+      document.getElementById('content').innerHTML = '<h2>' + filename + '</h2><p>Contenido simulado del archivo.</p>';
+      event.stopPropagation();
+    }
+    function openLocalFile() {
+  // Ruta al archivo local
+  const filePath = 'file:///D:/escuela/TERCER%20A%C3%91O/dise%C3%B1o%20de%20web/tp%201/peluqueria_imagenes_corregido.html';
+
+  // Abre el archivo en una nueva pestaña
+  window.location.href = filePath;
+}
+
+  </script>
+</body>
 </html>
