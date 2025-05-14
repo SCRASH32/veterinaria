@@ -35,19 +35,16 @@
     }
 
     ul.tree li {
-      ul.tree li {
-        cursor: pointer;
-        position: relative;
-        padding-left: 25px;
-        margin-bottom:20x; /* <-- añade espacio entre carpetas */
-        color: #000000;
-      }
+      cursor: pointer;
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 20px;
+      color: #000000;
     }
-    
 
     ul.tree li::before {
       content: "📁";
-      position:absolute;
+      position: absolute;
       left: 0;
     }
 
@@ -76,7 +73,7 @@
 
     /* Estilos para el mapa responsivo */
     .map-container {
-      position: flex;
+      position: relative;
       padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
       height: 0;
       overflow: hidden;
@@ -85,50 +82,55 @@
 
     .map-container iframe {
       position: absolute;
-      top: 450px;
+      top: 0;
       left: 0;
       width: 100%;
-      height: 80%;
-      padding: 0px;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Estilos para los botones */
+    .folder-button {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .folder-button:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
 <body>
-  <div class="path-bar" id="pathBar">Nuestas capetas de informacion</div>
+  <div class="path-bar" id="pathBar">Nuestras carpetas de información</div>
   <div class="explorer">
     <div class="sidebar">
       <ul class="tree">
-        <li id="imagenesFolder" onclick="openLocalFile()">Cortes</li>
-        <li id="imagenesFolder" onclick="openLocalFile()">Imágenes</li>
-
+        <li>
+          Cortes
+          <br>
+          <button class="folder-button" onclick="window.location.href='file:///D:/escuela/TERCER%20A%C3%91O/dise%C3%B1o%20de%20web/tp%201/peluqueria_imagenes_corregido.html'">Ir a Cortes</button>
+        </li>
+        <li>
+          Imágenes
+          <br>
+          <button class="folder-button" onclick="window.location.href='file:///D:/escuela/TERCER%20A%C3%91O/dise%C3%B1o%20de%20web/tp%201/peluqueria_imagenes_corregido.html'">Ir a Imágenes</button>
+        </li>
       </ul>
+    </div>
+    <div class="content">
+      <!-- Contenido principal aquí -->
     </div>
   </div>
   <div class="map-container">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.1957264230414!2d-60.74262122351325!3d-31.491303499878608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5050c3e421c6d%3A0x3697a6f6dd8fd91c!2sEstanislao%20L%C3%B3pez%20965%2C%20S3018APM%20Recreo%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1746128206761!5m2!1ses!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.1957264230414!2d-60.74262122351325!3d-31.491303499878608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5050c3e421c6d%3A0x3697a6f6dd8fd91c!2sEstanislao%20L%C3%B3pez%20965%2C%20S3018APM%20Recreo%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1746128206761!5m2!1ses!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
-
-  <script>
-    function toggle(element) {
-      element.classList.toggle('open');
-      event.stopPropagation();
-    }
-
-    function showFile(event, filename) {
-      document.getElementById('content').innerHTML = '<h2>' + filename + '</h2><p>Contenido simulado del archivo.</p>';
-      event.stopPropagation();
-    }
-    function openLocalFile() {
-  // Ruta al archivo local
-  const filePath = 'file:///D:/escuela/TERCER%20A%C3%91O/dise%C3%B1o%20de%20web/tp%201/peluqueria_imagenes_corregido.html';
-
-  // Abre el archivo en una nueva pestaña
-  window.location.href = filePath;
-}
-
-  </script>
 </body>
-</html>
 </html>
 
